@@ -1,11 +1,10 @@
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Arnab Ghosh Portfolio</title>
 
-<!-- ICONS -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
@@ -13,120 +12,117 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    scroll-behavior: smooth;
 }
 
-/* 🌈 ANIMATED BACKGROUND */
+/* 🌈 BACKGROUND */
 body {
     font-family: Arial, sans-serif;
     background: linear-gradient(-45deg, #00c6ff, #0072ff, #6a11cb, #2575fc);
     background-size: 400% 400%;
-    animation: gradientMove 10s ease infinite;
+    animation: gradient 10s ease infinite;
     color: white;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
 }
 
-@keyframes gradientMove {
-    0% { background-position: 0% }
-    50% { background-position: 100% }
-    100% { background-position: 0% }
+.dark {
+    background: #0f172a;
+}
+
+/* NAVBAR */
+nav {
+    position: sticky;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 25px;
+    backdrop-filter: blur(10px);
+    background: rgba(0,0,0,0.3);
+    z-index: 1000;
+}
+
+nav a {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
 }
 
 /* HEADER */
 header {
     text-align: center;
-    padding: 30px 15px;
+    padding: 50px 20px;
 }
 
-/* PROFILE IMAGE */
 .profile-img {
-    width: 120px;
-    height: 120px;
+    width: 140px;
     border-radius: 50%;
-    border: 3px solid white;
-    object-fit: cover;
-    margin-bottom: 10px;
-    transition: 0.4s;
-}
-
-.profile-img:hover {
-    transform: scale(1.1);
-}
-
-/* NAME */
-header h1 {
-    font-size: 30px;
-}
-
-/* TEXT ANIMATION */
-#animatedText {
-    height: 22px;
-    line-height: 22px;
-    overflow: hidden;
-    display: inline-block;
-    min-width: 160px;
-    color: #ffcc00;
+    margin-bottom: 15px;
 }
 
 /* SECTION */
 section {
-    padding: 25px 15px;
+    padding: 50px 20px;
     text-align: center;
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeIn 1s ease forwards;
-}
-
-/* FADE ANIMATION */
-@keyframes fadeIn {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* SECTION TITLES */
-h2 {
-    margin-bottom: 20px;
-    font-size: 24px;
-}
-
-h2::after {
-    content: "";
-    width: 50px;
-    height: 3px;
-    background: white;
-    display: block;
-    margin: 8px auto;
 }
 
 /* CARDS */
 .card {
     background: rgba(255,255,255,0.1);
     margin: 15px auto;
-    padding: 15px;
+    padding: 20px;
     width: 90%;
     border-radius: 15px;
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(255,255,255,0.2);
-    transition: 0.3s;
+    backdrop-filter: blur(10px);
+    transition: 0.4s;
 }
 
 .card:hover {
-    transform: translateY(-5px) scale(1.03);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    transform: translateY(-8px);
+}
+
+/* GRID */
+.grid {
+    display: grid;
+    gap: 20px;
+}
+
+/* PROJECT IMAGE HOVER */
+.project-img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.project-overlay {
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.card:hover .project-overlay {
+    opacity: 1;
+}
+
+/* SKILLS */
+.bar {
+    background: #333;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.fill {
+    height: 10px;
+    background: #ffcc00;
+    width: 0;
+    transition: 1s;
 }
 
 /* BUTTON */
 .btn {
-    padding: 10px 20px;
+    display: inline-block;
+    margin: 5px;
+    padding: 10px 18px;
     border-radius: 25px;
-    background: linear-gradient(45deg, #ffcc00, #ff5733);
+    background: linear-gradient(45deg, #ff5733, #ffcc00);
     color: white;
     text-decoration: none;
-    margin: 5px;
-    display: inline-block;
     transition: 0.3s;
 }
 
@@ -137,23 +133,20 @@ h2::after {
 /* FOOTER */
 footer {
     text-align: center;
-    padding: 15px;
-    margin-top: auto;
+    padding: 20px;
+}
+
+/* ANIMATION */
+@keyframes gradient {
+    0% {background-position:0%}
+    50% {background-position:100%}
+    100% {background-position:0%}
 }
 
 /* DESKTOP */
-@media (min-width: 768px) {
-    .card {
-        max-width: 500px;
-    }
-
-    header h1 {
-        font-size: 40px;
-    }
-
-    .profile-img {
-        width: 150px;
-        height: 150px;
+@media(min-width:768px){
+    .grid {
+        grid-template-columns: repeat(2,1fr);
     }
 }
 </style>
@@ -161,115 +154,122 @@ footer {
 
 <body>
 
+<nav>
+    <b>Arnab</b>
+    <div>
+        <a href="#about">About</a>
+        <a href="#education">Education</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+        <button onclick="toggleMode()">🌙</button>
+    </div>
+</nav>
+
 <header>
-    <img src="IMG_20240908_181159.jpg" alt="Profile Photo" class="profile-img">
+    <img src="IMG_20240908_181159.jpg" class="profile-img">
     <h1>Arnab Ghosh</h1>
     <p id="animatedText"></p>
 </header>
 
-<!-- ABOUT -->
-<section>
-    <h2><i class="fas fa-user"></i> About Me</h2>
-    <div class="card">
-        <p>
-            I am a motivated and dedicated student with a strong interest in computer science. 
-            I completed my secondary education from Radhakantapur High School and my higher 
-            secondary education from Gantar B.M. High School. Currently, I am pursuing a 
-            Bachelor’s degree in Computer Science (Honours) at Memari College.
-        </p>
+<section id="about">
+    <h2>About Me</h2>
+    <div class="card">Passionate CS student building real-world projects.</div>
+</section>
+
+<section id="education">
+    <h2>Education</h2>
+    <div class="grid">
+        <div class="card">Radhakantapur High School</div>
+        <div class="card">Gantar B.M. High School</div>
+        <div class="card">Memari College</div>
     </div>
 </section>
 
-<!-- EDUCATION -->
-<section>
-    <h2><i class="fas fa-graduation-cap"></i> Education</h2>
+<section id="skills">
+    <h2>Skills</h2>
 
     <div class="card">
-        <h3>Secondary Education</h3>
-        <p>Radhakantapur High School</p>
+        <p>Python</p>
+        <div class="bar"><div class="fill" data-width="80%"></div></div>
     </div>
 
     <div class="card">
-        <h3>Higher Secondary</h3>
-        <p>Gantar B.M. High School</p>
+        <p>HTML/CSS</p>
+        <div class="bar"><div class="fill" data-width="70%"></div></div>
     </div>
 
     <div class="card">
-        <h3>Bachelor's Degree</h3>
-        <p>Computer Science (Honours)</p>
-        <p>Memari College</p>
+        <p>JavaScript</p>
+        <div class="bar"><div class="fill" data-width="60%"></div></div>
     </div>
 </section>
 
-<!-- PROJECTS -->
-<section>
-    <h2><i class="fas fa-code"></i> Projects</h2>
+<section id="projects">
+    <h2>Projects</h2>
 
-    <div class="card">
-        <h3>Tic Tac Toe Game</h3>
-        <p>Python based game</p>
-    </div>
+    <div class="grid">
+        <div class="card">
+            <img src="https://via.placeholder.com/300" class="project-img">
+            <h3>Tic Tac Toe</h3>
+            <a href="#" class="btn">Live</a>
+            <a href="#" class="btn">Code</a>
+        </div>
 
-    <div class="card">
-        <h3>Calculator App</h3>
-        <p>Python calculator</p>
-    </div>
-</section>
-
-<!-- CONTACT -->
-<section>
-    <h2><i class="fas fa-envelope"></i> Contact</h2>
-    <div class="card">
-        <p>Email: ghosharnab436@gmail.com</p>
-        <br>
-        <a href="mailto:ghosharnab436@gmail.com" class="btn">Contact Me</a>
-
-        <div style="margin-top:15px;">
-            <a href="#" class="btn"><i class="fab fa-github"></i> GitHub</a>
-            <a href="#" class="btn"><i class="fab fa-linkedin"></i> LinkedIn</a>
+        <div class="card">
+            <img src="https://via.placeholder.com/300" class="project-img">
+            <h3>Calculator</h3>
+            <a href="#" class="btn">Live</a>
+            <a href="#" class="btn">Code</a>
         </div>
     </div>
 </section>
 
+<section id="contact">
+    <h2>Contact</h2>
+    <div class="card">
+        <p>Email: ghosharnab436@gmail.com</p>
+        <a href="mailto:ghosharnab436@gmail.com" class="btn">Email</a>
+    </div>
+</section>
+
 <footer>
-    <p>© 2026 Arnab Ghosh</p>
+    © 2026 Arnab Ghosh
 </footer>
 
 <script>
-const texts = [
-    "Developer 💻",
-    "Programmer ⚡",
-    "Problem Solver 🧠",
-    "Tech Learner 🚀"
-];
+/* TEXT EFFECT */
+const texts=["Developer 💻","Programmer ⚡","Problem Solver 🧠"];
+let i=0,j=0,d=false;
 
-let i = 0;
-let j = 0;
-let isDeleting = false;
+function type(){
+let t=texts[i];
+document.getElementById("animatedText").innerHTML=t.substring(0,j);
+if(!d && j<t.length){j++;setTimeout(type,100)}
+else if(d && j>0){j--;setTimeout(type,50)}
+else{d=!d;if(!d)i=(i+1)%texts.length;setTimeout(type,800)}
+}
+type();
 
-function typeEffect() {
-    let current = texts[i];
-    let displayText = current.substring(0, j);
-    document.getElementById("animatedText").innerHTML = displayText;
-
-    if (!isDeleting && j < current.length) {
-        j++;
-        setTimeout(typeEffect, 100);
-    } 
-    else if (isDeleting && j > 0) {
-        j--;
-        setTimeout(typeEffect, 50);
-    } 
-    else {
-        isDeleting = !isDeleting;
-        if (!isDeleting) {
-            i = (i + 1) % texts.length;
-        }
-        setTimeout(typeEffect, 800);
-    }
+/* DARK MODE SAVE */
+function toggleMode(){
+document.body.classList.toggle("dark");
+localStorage.setItem("mode",document.body.classList.contains("dark"));
 }
 
-typeEffect();
+if(localStorage.getItem("mode")=="true"){
+document.body.classList.add("dark");
+}
+
+/* SKILL ANIMATION */
+window.addEventListener("scroll",()=>{
+document.querySelectorAll(".fill").forEach(el=>{
+let rect=el.getBoundingClientRect();
+if(rect.top<window.innerHeight){
+el.style.width=el.dataset.width;
+}
+});
+});
 </script>
 
 </body>
