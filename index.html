@@ -8,179 +8,255 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-* {
+*{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    cursor:none;
+    font-family: 'Segoe UI', sans-serif;
+    scroll-behavior:smooth;
 }
 
-/* 🌌 BACKGROUND */
-body {
-    font-family:Arial;
+body{
     background:#0f172a;
-    color:white;
-    overflow-x:hidden;
-}
-
-/* 🖱️ CUSTOM CURSOR */
-.cursor {
-    width:20px;
-    height:20px;
-    border:2px solid #ffcc00;
-    border-radius:50%;
-    position:fixed;
-    pointer-events:none;
-    transform:translate(-50%,-50%);
+    color:#e2e8f0;
 }
 
 /* NAVBAR */
-nav {
+nav{
     position:fixed;
-    top:10px;
-    left:50%;
-    transform:translateX(-50%);
-    background:rgba(255,255,255,0.1);
-    backdrop-filter:blur(10px);
-    padding:10px 20px;
-    border-radius:30px;
+    width:100%;
+    top:0;
+    background:#020617;
+    padding:15px 30px;
+    display:flex;
+    justify-content:space-between;
     z-index:1000;
 }
 
+nav a{
+    color:#e2e8f0;
+    margin:0 10px;
+    text-decoration:none;
+    font-size:14px;
+}
+
 /* HEADER */
-header {
+header{
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
     text-align:center;
-    padding:120px 20px;
 }
 
-/* SECTIONS */
-section {
+.profile-img{
+    width:140px;
+    height:140px;
+    border-radius:50%;
+    object-fit:cover;
+    border:3px solid #38bdf8;
+    margin-bottom:15px;
+}
+
+h1{
+    font-size:32px;
+}
+
+.subtitle{
+    color:#38bdf8;
+    margin-top:5px;
+}
+
+/* SECTION */
+section{
     padding:80px 20px;
-    opacity:0;
-    transform:translateY(50px);
-    transition:1s;
+    max-width:1000px;
+    margin:auto;
 }
 
-section.show {
-    opacity:1;
-    transform:translateY(0);
+h2{
+    margin-bottom:20px;
+    color:#38bdf8;
 }
 
-/* CARDS */
-.card {
-    background:rgba(255,255,255,0.1);
+/* CARD */
+.card{
+    background:#020617;
     padding:20px;
-    margin:20px auto;
-    border-radius:15px;
-    width:90%;
-    backdrop-filter:blur(10px);
+    margin:15px 0;
+    border-radius:10px;
+    border:1px solid #1e293b;
+}
+
+/* GRID */
+.grid{
+    display:grid;
+    gap:15px;
+}
+
+/* SKILLS */
+.skill{
+    margin-bottom:10px;
+}
+
+.bar{
+    height:8px;
+    background:#1e293b;
+    border-radius:10px;
+}
+
+.fill{
+    height:8px;
+    background:#38bdf8;
+    border-radius:10px;
 }
 
 /* BUTTON */
-.btn {
-    padding:10px 15px;
-    border-radius:20px;
-    background:#ff5733;
-    color:white;
+.btn{
+    display:inline-block;
+    margin-top:10px;
+    padding:8px 15px;
+    background:#38bdf8;
+    color:black;
     text-decoration:none;
+    border-radius:5px;
+    font-size:14px;
 }
 
-/* CHATBOT */
-#chat {
-    position:fixed;
-    bottom:20px;
-    right:20px;
-    width:250px;
-    background:#1e293b;
-    border-radius:10px;
-    padding:10px;
+/* FOOTER */
+footer{
+    text-align:center;
+    padding:20px;
+    font-size:14px;
+    color:#94a3b8;
 }
 
-#messages {
-    height:150px;
-    overflow:auto;
-    font-size:12px;
-}
-
-input {
-    width:100%;
-    padding:5px;
+/* RESPONSIVE */
+@media(min-width:768px){
+    .grid{
+        grid-template-columns:repeat(2,1fr);
+    }
 }
 </style>
 </head>
 
 <body>
 
-<div class="cursor"></div>
-
+<!-- NAV -->
 <nav>
-    <a href="#about">About</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
+    <b>Arnab</b>
+    <div>
+        <a href="#about">About</a>
+        <a href="#education">Education</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+    </div>
 </nav>
 
+<!-- HEADER -->
 <header>
+    <!-- 🔥 PUT YOUR IMAGE HERE -->
+    <img src="IMG_20240908_181159.jpg" class="profile-img">
+
     <h1>Arnab Ghosh</h1>
-    <p>🚀 Developer | Programmer | Problem Solver</p>
+    <p class="subtitle">Computer Science Student | Developer</p>
 </header>
 
+<!-- ABOUT -->
 <section id="about">
-    <div class="card">Computer Science student building future tech.</div>
-</section>
-
-<section id="projects">
+    <h2>About Me</h2>
     <div class="card">
-        <h3>Tic Tac Toe</h3>
-        <a href="#" class="btn">Live</a>
+        <p>
+        I am a Computer Science student passionate about programming, problem solving, 
+        and building real-world applications. I enjoy learning new technologies and 
+        continuously improving my development skills.
+        </p>
     </div>
 </section>
 
+<!-- EDUCATION -->
+<section id="education">
+    <h2>Education</h2>
+
+    <div class="card">
+        <h3>Memari College</h3>
+        <p>B.Sc Computer Science (Honours)</p>
+    </div>
+
+    <div class="card">
+        <h3>Gantar B.M. High School</h3>
+        <p>Higher Secondary</p>
+    </div>
+
+    <div class="card">
+        <h3>Radhakantapur High School</h3>
+        <p>Secondary Education</p>
+    </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+    <h2>Skills</h2>
+
+    <div class="skill">
+        <p>Python</p>
+        <div class="bar"><div class="fill" style="width:80%"></div></div>
+    </div>
+
+    <div class="skill">
+        <p>HTML/CSS</p>
+        <div class="bar"><div class="fill" style="width:75%"></div></div>
+    </div>
+
+    <div class="skill">
+        <p>JavaScript</p>
+        <div class="bar"><div class="fill" style="width:60%"></div></div>
+    </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+    <h2>Projects</h2>
+
+    <div class="grid">
+
+        <div class="card">
+            <h3>Tic Tac Toe Game</h3>
+            <p>Python based game</p>
+            <a href="#" class="btn">View Code</a>
+        </div>
+
+        <div class="card">
+            <h3>Calculator App</h3>
+            <p>Python calculator</p>
+            <a href="#" class="btn">View Code</a>
+        </div>
+
+    </div>
+</section>
+
+<!-- CONTACT -->
 <section id="contact">
+    <h2>Contact</h2>
+
     <div class="card">
         <p>Email: ghosharnab436@gmail.com</p>
+
+        <a href="mailto:ghosharnab436@gmail.com" class="btn">Send Email</a>
+
+        <br><br>
+
+        <!-- 🔗 ADD YOUR LINKS -->
+        <a href="#" class="btn"><i class="fab fa-github"></i> GitHub</a>
+        <a href="#" class="btn"><i class="fab fa-linkedin"></i> LinkedIn</a>
     </div>
 </section>
 
-<!-- 🤖 CHATBOT -->
-<div id="chat">
-    <div id="messages"></div>
-    <input type="text" placeholder="Ask me..." onkeydown="chat(event)">
-</div>
-
-<script>
-/* CURSOR */
-const cursor=document.querySelector(".cursor");
-document.addEventListener("mousemove",e=>{
-cursor.style.left=e.clientX+"px";
-cursor.style.top=e.clientY+"px";
-});
-
-/* SCROLL ANIMATION */
-window.addEventListener("scroll",()=>{
-document.querySelectorAll("section").forEach(sec=>{
-if(sec.getBoundingClientRect().top<window.innerHeight-100){
-sec.classList.add("show");
-}
-});
-});
-
-/* CHATBOT */
-function chat(e){
-if(e.key==="Enter"){
-let msg=e.target.value;
-let box=document.getElementById("messages");
-box.innerHTML+="<p>You: "+msg+"</p>";
-
-let reply="I am Arnab's portfolio bot 🤖";
-
-if(msg.includes("project")) reply="Check my projects above!";
-if(msg.includes("contact")) reply="Email: ghosharnab436@gmail.com";
-
-box.innerHTML+="<p>Bot: "+reply+"</p>";
-e.target.value="";
-}
-}
-</script>
+<footer>
+    © 2026 Arnab Ghosh
+</footer>
 
 </body>
 </html>
