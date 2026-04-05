@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Arnab Ghosh Portfolio</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* BODY */
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(270deg, #00c6ff, #0072ff);
+    color: white;
+
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* HEADER */
+header {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+/* 🖼️ PROFILE IMAGE */
+.profile-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 4px solid white;
+    object-fit: cover;
+    margin-bottom: 15px;
+    box-shadow: 0 0 15px rgba(255,255,255,0.7);
+    transition: 0.4s;
+}
+
+.profile-img:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 25px #fff;
+}
+
+/* NAME */
+header h1 {
+    font-size: 40px;
+    color: blue;
+}
+
+/* TEXT ANIMATION */
+
+    #animatedText {
+    height: 24px;
+    line-height: 24px;
+    overflow: hidden;
+    display: inline-block;
+    min-width: 200px; /* adjust based on your text */
+    
+    color: #ff5733; /* change to any color */
+
+}
+
+@keyframes blink {
+    50% { border-color: transparent; }
+}
+
+/* SECTION */
+section {
+    padding: 40px;
+    text-align: center;
+}
+
+/* ABOUT TEXT */
+.about-text {
+    max-width: 800px;
+    margin: auto;
+    line-height: 1.6;
+}
+
+/* PROJECT CARD */
+.project {
+    background: rgba(255,255,255,0.1);
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 500px;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    transition: 0.3s;
+}
+
+.project:hover {
+    transform: scale(1.05);
+}
+
+/* BUTTON */
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    background: white;
+    color: #0072ff;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    transform: scale(1.1);
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: auto;
+}
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+    <!-- 🖼️ ADD YOUR IMAGE HERE -->
+    <img src="IMG_20240908_181159.jpg" alt="Profile Photo" class="profile-img">
+
+    <h1>Arnab Ghosh</h1>
+    <p id="animatedText"></p>
+</header>
+
+<section>
+    <h2>About Me</h2>
+    <p class="about-text">
+        I am a motivated and dedicated student with a strong interest in computer science. 
+        I completed my secondary education from Radhakantapur High School and my higher 
+        secondary education from Gantar B.M. High School. Currently, I am pursuing a 
+        Bachelor’s degree in Computer Science (Honours) at Memari College. 
+        I am passionate about learning new technologies and developing my skills in 
+        programming and problem-solving, aiming to build a successful career in the field 
+        of computer science.
+    </p>
+</section>
+
+<section>
+    <h2>Projects</h2>
+
+    <div class="project">
+        <h3>Tic Tac Toe Game</h3>
+        <p>Python based game</p>
+    </div>
+
+    <div class="project">
+        <h3>Calculator App</h3>
+        <p>Python calculator</p>
+    </div>
+
+</section>
+
+<section>
+    <h2>Contact</h2>
+    <p>Email: ghosharnab436@gmail.com</p><br><br>
+    <a href="mailto:ghosharnab436@gmail.com" class="btn">Contact Me</a>
+</section>
+
+<footer>
+    <p>© 2026 Arnab Ghosh</p>
+</footer>
+
+<script>
+const texts = [
+    "Developer 💻",
+    "Programmer ⚡",
+    "Problem Solver 🧠",
+    "Tech Learner 🚀"
+];
+
+let i = 0;
+let j = 0;
+let isDeleting = false;
+
+function typeEffect() {
+    let current = texts[i];
+    let displayText = current.substring(0, j);
+    document.getElementById("animatedText").innerHTML = displayText;
+
+    if (!isDeleting && j < current.length) {
+        j++;
+        setTimeout(typeEffect, 100);
+    } 
+    else if (isDeleting && j > 0) {
+        j--;
+        setTimeout(typeEffect, 50);
+    } 
+    else {
+        isDeleting = !isDeleting;
+        if (!isDeleting) {
+            i = (i + 1) % texts.length;
+        }
+        setTimeout(typeEffect, 800);
+    }
+}
+
+typeEffect();
+</script>
+
+</body>
+</html>
