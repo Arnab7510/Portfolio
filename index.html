@@ -3,260 +3,119 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Arnab Ghosh | Portfolio</title>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<title>Arnab Ghosh | Developer</title>
 
-<style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family: 'Segoe UI', sans-serif;
-    scroll-behavior:smooth;
-}
+<link rel="stylesheet" href="style.css">
 
-body{
-    background:#0f172a;
-    color:#e2e8f0;
-}
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
 
-/* NAVBAR */
-nav{
-    position:fixed;
-    width:100%;
-    top:0;
-    background:#020617;
-    padding:15px 30px;
-    display:flex;
-    justify-content:space-between;
-    z-index:1000;
-}
+<!-- AOS Animation -->
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
-nav a{
-    color:#e2e8f0;
-    margin:0 10px;
-    text-decoration:none;
-    font-size:14px;
-}
-
-/* HEADER */
-header{
-    height:100vh;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-}
-
-.profile-img{
-    width:140px;
-    height:140px;
-    border-radius:50%;
-    object-fit:cover;
-    border:3px solid #38bdf8;
-    margin-bottom:15px;
-}
-
-h1{
-    font-size:32px;
-}
-
-.subtitle{
-    color:#38bdf8;
-    margin-top:5px;
-}
-
-/* SECTION */
-section{
-    padding:80px 20px;
-    max-width:1000px;
-    margin:auto;
-}
-
-h2{
-    margin-bottom:20px;
-    color:#38bdf8;
-}
-
-/* CARD */
-.card{
-    background:#020617;
-    padding:20px;
-    margin:15px 0;
-    border-radius:10px;
-    border:1px solid #1e293b;
-}
-
-/* GRID */
-.grid{
-    display:grid;
-    gap:15px;
-}
-
-/* SKILLS */
-.skill{
-    margin-bottom:10px;
-}
-
-.bar{
-    height:8px;
-    background:#1e293b;
-    border-radius:10px;
-}
-
-.fill{
-    height:8px;
-    background:#38bdf8;
-    border-radius:10px;
-}
-
-/* BUTTON */
-.btn{
-    display:inline-block;
-    margin-top:10px;
-    padding:8px 15px;
-    background:#38bdf8;
-    color:black;
-    text-decoration:none;
-    border-radius:5px;
-    font-size:14px;
-}
-
-/* FOOTER */
-footer{
-    text-align:center;
-    padding:20px;
-    font-size:14px;
-    color:#94a3b8;
-}
-
-/* RESPONSIVE */
-@media(min-width:768px){
-    .grid{
-        grid-template-columns:repeat(2,1fr);
-    }
-}
-</style>
 </head>
-
 <body>
 
-<!-- NAV -->
+<!-- NAVBAR -->
 <nav>
-    <b>Arnab</b>
-    <div>
-        <a href="#about">About</a>
-        <a href="#education">Education</a>
-        <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
-    </div>
+    <h2>Arnab</h2>
+    <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button id="themeToggle">🌙</button>
 </nav>
 
-<!-- HEADER -->
-<header>
-    <!-- 🔥 PUT YOUR IMAGE HERE -->
-    <img src="IMG_20240908_181159.jpg" class="profile-img">
+<!-- HERO -->
+<section id="home" class="hero">
+    <div class="hero-text" data-aos="fade-right">
+        <h1>Hi, I'm Arnab 👋</h1>
+        <h2><span id="typing"></span></h2>
+        <button onclick="contactMe()">Hire Me</button>
+    </div>
 
-    <h1>Arnab Ghosh</h1>
-    <p class="subtitle">Computer Science Student | Developer</p>
-</header>
-
-<!-- ABOUT -->
-<section id="about">
-    <h2>About Me</h2>
-    <div class="card">
-        <p>
-        I am a Computer Science student passionate about programming, problem solving, 
-        and building real-world applications. I enjoy learning new technologies and 
-        continuously improving my development skills.
-        </p>
+    <div class="hero-img" data-aos="fade-left">
+        <img src="profile.jpg" alt="Profile">
     </div>
 </section>
 
-<!-- EDUCATION -->
-<section id="education">
-    <h2>Education</h2>
-
-    <div class="card">
-        <h3>Memari College</h3>
-        <p>B.Sc Computer Science (Honours)</p>
-    </div>
-
-    <div class="card">
-        <h3>Gantar B.M. High School</h3>
-        <p>Higher Secondary</p>
-    </div>
-
-    <div class="card">
-        <h3>Radhakantapur High School</h3>
-        <p>Secondary Education</p>
-    </div>
+<!-- ABOUT -->
+<section id="about" data-aos="fade-up">
+    <h2>About Me</h2>
+    <p>
+        I am a passionate Computer Science student from Memari College.
+        I build modern websites, apps, and real-world tech solutions.
+    </p>
 </section>
 
 <!-- SKILLS -->
 <section id="skills">
-    <h2>Skills</h2>
+    <h2 data-aos="fade-up">Skills</h2>
 
-    <div class="skill">
-        <p>Python</p>
-        <div class="bar"><div class="fill" style="width:80%"></div></div>
+    <div class="skill" data-aos="fade-right">
+        <p>HTML</p>
+        <div class="bar"><div class="progress" style="width:90%"></div></div>
     </div>
 
-    <div class="skill">
-        <p>HTML/CSS</p>
-        <div class="bar"><div class="fill" style="width:75%"></div></div>
+    <div class="skill" data-aos="fade-right">
+        <p>CSS</p>
+        <div class="bar"><div class="progress" style="width:85%"></div></div>
     </div>
 
-    <div class="skill">
+    <div class="skill" data-aos="fade-right">
         <p>JavaScript</p>
-        <div class="bar"><div class="fill" style="width:60%"></div></div>
+        <div class="bar"><div class="progress" style="width:75%"></div></div>
     </div>
 </section>
 
 <!-- PROJECTS -->
 <section id="projects">
-    <h2>Projects</h2>
+    <h2 data-aos="fade-up">Projects</h2>
 
-    <div class="grid">
+    <div class="card-container">
 
-        <div class="card">
-            <h3>Tic Tac Toe Game</h3>
-            <p>Python based game</p>
-            <a href="#" class="btn">View Code</a>
+        <div class="card" data-aos="zoom-in">
+            <h3>Portfolio Website</h3>
+            <p>Modern personal portfolio</p>
+            <button>View</button>
         </div>
 
-        <div class="card">
-            <h3>Calculator App</h3>
-            <p>Python calculator</p>
-            <a href="#" class="btn">View Code</a>
+        <div class="card" data-aos="zoom-in">
+            <h3>Tic Tac Toe</h3>
+            <p>Game built using JS</p>
+            <button>View</button>
+        </div>
+
+        <div class="card" data-aos="zoom-in">
+            <h3>More Coming</h3>
+            <p>Stay tuned...</p>
         </div>
 
     </div>
 </section>
 
 <!-- CONTACT -->
-<section id="contact">
-    <h2>Contact</h2>
-
-    <div class="card">
-        <p>Email: ghosharnab436@gmail.com</p>
-
-        <a href="mailto:ghosharnab436@gmail.com" class="btn">Send Email</a>
-
-        <br><br>
-
-        <!-- 🔗 ADD YOUR LINKS -->
-        <a href="#" class="btn"><i class="fab fa-github"></i> GitHub</a>
-        <a href="#" class="btn"><i class="fab fa-linkedin"></i> LinkedIn</a>
-    </div>
+<section id="contact" data-aos="fade-up">
+    <h2>Contact Me</h2>
+    <p>Let's work together 🚀</p>
+    <button onclick="contactMe()">Send Email</button>
 </section>
 
 <footer>
-    © 2026 Arnab Ghosh
+    <p>© 2026 Arnab Ghosh</p>
 </footer>
+
+<script src="script.js"></script>
+
+<!-- AOS Script -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+AOS.init();
+</script>
 
 </body>
 </html>
