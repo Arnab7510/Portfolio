@@ -1,0 +1,101 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    background: #0f172a;
+    color: white;
+    transition: 0.3s;
+}
+
+/* LIGHT MODE */
+.light {
+    background: #f1f5f9;
+    color: black;
+}
+
+/* NAVBAR */
+nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 50px;
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(10px);
+    position: sticky;
+    top: 0;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+nav ul li a {
+    margin: 0 15px;
+    color: white;
+    text-decoration: none;
+}
+
+/* HERO */
+.hero {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 80px;
+}
+
+.hero img {
+    width: 250px;
+    border-radius: 50%;
+    box-shadow: 0 0 30px #38bdf8;
+}
+
+/* BUTTON */
+button {
+    padding: 10px 20px;
+    border: none;
+    background: linear-gradient(45deg, #38bdf8, #6366f1);
+    color: white;
+    cursor: pointer;
+}
+
+/* SKILLS */
+.skill {
+    width: 60%;
+    margin: 20px auto;
+}
+
+.bar {
+    background: #1e293b;
+    height: 10px;
+    border-radius: 10px;
+}
+
+.progress {
+    height: 10px;
+    background: #38bdf8;
+    border-radius: 10px;
+}
+
+/* CARDS */
+.card-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.card {
+    background: rgba(255,255,255,0.05);
+    padding: 20px;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 20px;
+}
