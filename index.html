@@ -3,146 +3,454 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arnab Ghosh | Portfolio</title>
+    <title>ARNAB GHOSH // LOGIC OPERATOR</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        html {
-            scroll-behavior: smooth;
+        @import url('https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Plus+Jakarta+Sans:wght@200;400;600;800&display=swap');
+        
+        :root {
+            --bg: #010205; /* Deep Void Black */
+            --primary: #00f2fe; /* Holographic Cyan */
+            --secondary: #ff0055; /* Hot Pink Accent */
+            --card-bg: rgba(255, 255, 255, 0.01);
+            cursor: none; /* Custom cursor */
         }
+
         body {
-            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #312e81 100%);
-            min-height: 100vh;
+            background-color: var(--bg);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: #d1d5db;
+            overflow-x: hidden;
+            letter-spacing: 0.05em;
         }
-        .glass {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+
+        .title-font { font-family: 'Syncopate', sans-serif; }
+
+        /* --- HYPER-ATTRACTIVE BACKGROUND --- */
+        #tsparticles {
+            position: fixed;
+            width: 100%; height: 100%;
+            z-index: -2;
+            pointer-events: none;
         }
-        .nav-glass {
-            background: rgba(15, 23, 42, 0.8);
-            backdrop-filter: blur(10px);
+
+        .glow-orb {
+            position: fixed;
+            width: 800px; height: 800px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0, 242, 254, 0.06) 0%, transparent 70%);
+            filter: blur(100px);
+            z-index: -1;
+            pointer-events: none;
+            animation: orbFloat 20s infinite alternate;
+        }
+
+        @keyframes orbFloat {
+            0% { transform: translate(-20%, -20%) scale(1); }
+            100% { transform: translate(20%, 20%) scale(1.1); }
+        }
+
+        /* --- CUSTOM INTERACTIVE CURSOR --- */
+        #cursor {
+            width: 8px; height: 8px;
+            background-color: var(--primary);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.1s ease;
+        }
+
+        #cursor-follower {
+            width: 35px; height: 35px;
+            border: 1px solid rgba(0, 242, 254, 0.3);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9998;
+            transition: transform 0.15s ease, border-color 0.3s ease;
+        }
+
+        /* --- THE ULTIMATE HIGHLIGHTED NAME --- */
+        .highlight-container {
+            position: relative;
+            display: inline-block;
+            perspective: 1000px;
+        }
+
+        .hero-name {
+            font-size: clamp(3rem, 15vw, 10rem);
+            font-weight: 800;
+            line-height: 0.85;
+            letter-spacing: -0.05em;
+            text-transform: uppercase;
+            color: #fff;
+            position: relative;
+            z-index: 10;
+            transition: transform 0.1s ease;
+        }
+
+        .hero-name span { display: block; }
+
+        /* Shimmering Gradient Overlay */
+        .hero-name::before {
+            content: attr(data-text);
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, transparent 30%, var(--primary) 50%, transparent 70%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shimmer 4s linear infinite;
+            z-index: 11;
+            pointer-events: none;
+        }
+
+        /* Neon Outer Glow */
+        .hero-name::after {
+            content: attr(data-text);
+            position: absolute;
+            inset: 0;
+            color: transparent;
+            text-shadow: 0 0 25px rgba(0, 242, 254, 0.8);
+            z-index: 9;
+            filter: blur(5px);
+            opacity: 0.8;
+        }
+
+        @keyframes shimmer {
+            to { background-position: 200% center; }
+        }
+
+        /* --- PREMIUM COMPONENTS --- */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.01);
+            backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            border-radius: 16px;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glass-panel:hover {
+            border-color: rgba(0, 242, 254, 0.3);
+            box-shadow: 0 0 40px rgba(0, 242, 254, 0.08);
+            transform: translateY(-8px) rotateX(2deg);
+        }
+
+        .glass-panel::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.03), transparent);
+            transition: 0.6s;
+        }
+
+        .glass-panel:hover::before { left: 100%; }
+
+        .cyan-glow-text {
+            color: var(--primary);
+            text-shadow: 0 0 10px rgba(0, 242, 254, 0.6);
+        }
+
+        .morph-profile {
+            width: 320px; height: 320px;
+            background: linear-gradient(45deg, var(--primary), #818cf8, var(--secondary));
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            animation: profileMorph 12s ease-in-out infinite;
+            padding: 5px;
+            box-shadow: 0 0 50px rgba(0, 242, 254, 0.2);
+            transition: transform 0.1s ease;
+        }
+
+        @keyframes profileMorph {
+            0% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+            33% { border-radius: 65% 35% 50% 50% / 35% 50% 50% 65%; }
+            66% { border-radius: 50% 50% 35% 65% / 50% 65% 35% 50%; }
+            100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+        }
+
+        .profile-img-container {
+            width: 100%; height: 100%;
+            background: var(--bg);
+            border-radius: inherit;
+            overflow: hidden;
+        }
+
+        /* --- SECTION HEADERS --- */
+        .section-header {
+            text-transform: uppercase;
+            font-size: 0.7rem;
+            font-weight: 800;
+            letter-spacing: 0.6em;
+            color: #4b5563;
+            text-align: center;
+            position: relative;
+            margin-bottom: 5rem;
+        }
+        .section-header::before {
+            content: '';
+            position: absolute;
+            width: 50px; height: 1px;
+            background: #2d3748;
+            left: calc(50% - 25px);
+            bottom: -15px;
         }
     </style>
 </head>
-<body class="text-slate-200 font-sans antialiased">
+<body class="selection:bg-cyan-500 selection:text-black">
 
-    <nav class="nav-glass fixed top-0 w-full z-50 border-b border-white/10">
-        <div class="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#home" class="text-2xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400">
-                ARNAB.
-            </a>
+    <div id="tsparticles"></div>
+    <div class="glow-orb top-[-10%] left-[-10%]"></div>
+    <div class="glow-orb bottom-[-10%] right-[-10%]" style="background: radial-gradient(circle, rgba(255, 0, 85, 0.04) 0%, transparent 70%);"></div>
 
-            <div class="hidden md:flex space-x-8 text-xs font-bold uppercase tracking-widest">
-                <a href="#home" class="hover:text-cyan-400 transition">Home</a>
-                <a href="#qualification" class="hover:text-cyan-400 transition">Qualification</a>
-                <a href="#contact" class="hover:text-cyan-400 transition">Contact</a>
+    <div id="cursor"></div>
+    <div id="cursor-follower"></div>
+
+    <nav class="fixed w-full top-0 z-50 px-6 py-4">
+        <div class="max-w-7xl mx-auto glass-panel px-8 py-3 flex justify-between items-center border-white/5">
+            <div class="text-xl font-bold tracking-widest title-font cyan-glow-text">AG // CORE</div>
+            <div class="hidden md:flex space-x-10 text-xs font-semibold tracking-[0.2em] uppercase">
+                <a href="#home" class="hover:text-cyan-300 transition nav-item">Init</a>
+                <a href="#about" class="hover:text-cyan-300 transition nav-item">Base</a>
+                <a href="#skills" class="hover:text-cyan-300 transition nav-item">Logic</a>
+                <a href="#contact" class="px-5 py-1.5 border border-cyan-500/20 rounded text-cyan-400 hover:bg-cyan-500 hover:text-black transition nav-item">Connect</a>
             </div>
-
-            <button id="menu-btn" class="md:hidden text-white focus:outline-none">
-                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-                </svg>
-            </button>
-        </div>
-
-        <div id="mobile-menu" class="hidden md:hidden bg-slate-900 border-b border-white/10 px-6 py-8 space-y-6 font-bold uppercase tracking-widest text-sm text-center">
-            <a href="#home" class="block text-slate-300 hover:text-cyan-400">Home</a>
-            <a href="#qualification" class="block text-slate-300 hover:text-cyan-400">Qualification</a>
-            <a href="mailto:arnabghosh@example.com" class="block text-cyan-400 underline underline-offset-8">Email Me</a>
         </div>
     </nav>
 
-    <section id="home" class="pt-32 pb-20 px-6 text-center">
-        <div class="relative inline-block mb-8">
-            <div class="absolute inset-0 bg-gradient-to-tr from-cyan-500 via-purple-500 to-pink-500 rounded-full blur-xl opacity-40 animate-pulse"></div>
-            <img src="profile.jpg" alt="Arnab Ghosh" class="relative w-40 h-40 rounded-full border-4 border-white/10 object-cover shadow-2xl mx-auto">
-        </div>
-        
-        <h1 class="text-5xl md:text-7xl font-black mb-4 tracking-tight text-white">
-            Arnab Ghosh
-        </h1>
-        <p class="text-lg md:text-xl text-cyan-400 font-semibold mb-6">
-            BSc Computer Science (Honours) Student
-        </p>
-        <p class="text-slate-400 max-w-lg mx-auto leading-relaxed mb-10">
-            Currently studying at <span class="text-white font-bold">Memari College</span>. 
-            Passionate about programming, solving complex problems, and exploring modern computer science.
-        </p>
-        <a href="#contact" class="bg-white text-slate-900 px-10 py-4 rounded-full font-black uppercase tracking-widest hover:bg-cyan-400 hover:scale-105 transition-all">
-            Get In Touch
-        </a>
-    </section>
-
-    <section id="qualification" class="py-24 px-6 max-w-4xl mx-auto">
-        <div class="flex items-center justify-center gap-4 mb-16">
-            <div class="h-px w-12 bg-cyan-500"></div>
-            <h2 class="text-3xl font-black uppercase tracking-widest text-white text-center">My Qualifications</h2>
-            <div class="h-px w-12 bg-cyan-500"></div>
-        </div>
-
-        <div class="space-y-6">
-            <div class="glass p-8 rounded-3xl group hover:border-cyan-500/50 transition-all duration-300">
-                <div class="flex justify-between items-start mb-4">
-                    <span class="text-cyan-400 text-xs font-black uppercase tracking-tighter bg-cyan-400/10 px-3 py-1 rounded-full border border-cyan-400/20">Current</span>
-                    <span class="text-slate-500 text-xs font-mono">Present</span>
+    <section id="home" class="min-h-screen flex items-center pt-28 px-6 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-20 items-center w-full z-10">
+            <div class="space-y-12">
+                <div class="inline-flex items-center gap-3 px-4 py-1.5 rounded-full border border-cyan-500/20 bg-cyan-500/5 text-cyan-300 text-xs tracking-widest uppercase font-semibold">
+                    <span class="relative flex h-2.5 w-2.5"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span><span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-cyan-500"></span></span>
+                    Systems Operational // BSc CS Honours
                 </div>
-                <h3 class="text-2xl font-bold text-white mb-1">BSc Computer Science (Honours)</h3>
-                <p class="text-slate-400 font-medium">Memari College</p>
-            </div>
-
-            <div class="glass p-8 rounded-3xl group hover:border-purple-500/50 transition-all duration-300">
-                <div class="flex justify-between items-start mb-4">
-                    <span class="text-purple-400 text-xs font-black uppercase tracking-tighter bg-purple-400/10 px-3 py-1 rounded-full border border-purple-400/20">Completed</span>
+                
+                <div class="highlight-container">
+                    <h1 class="hero-name title-font" data-text="ARNAB GHOSH" id="parallax-name">
+                        <span>ARNAB</span><span>GHOSH</span>
+                    </h1>
                 </div>
-                <h3 class="text-2xl font-bold text-white mb-1">Higher Secondary</h3>
-                <p class="text-slate-400 font-medium">Gantar B M High School</p>
-            </div>
-
-            <div class="glass p-8 rounded-3xl group hover:border-pink-500/50 transition-all duration-300">
-                <div class="flex justify-between items-start mb-4">
-                    <span class="text-pink-400 text-xs font-black uppercase tracking-tighter bg-pink-400/10 px-3 py-1 rounded-full border border-pink-400/20">Completed</span>
+                
+                <p class="text-slate-400 text-xl md:text-2xl max-w-xl font-extralight leading-relaxed">
+                    Executing logic paradigms across <span class="text-white font-medium">C++, Python, and Java</span>. Currently formulating computational theories at <span class="text-cyan-400 underline underline-offset-8 decoration-cyan-500/30">Memari College</span>.
+                </p>
+                
+                <div class="flex flex-wrap gap-8 items-center pt-6">
+                    <a href="#contact" class="px-12 py-5 bg-cyan-500 text-black rounded-full font-bold uppercase tracking-widest text-sm transition-all hover:shadow-[0_0_40px_rgba(0,242,254,0.6)] hover:scale-105 active:scale-95 nav-item">
+                        Initialize Contact
+                    </a>
+                    <div class="flex gap-6 text-3xl text-slate-600">
+                        <a href="#" target="_blank" class="hover:text-cyan-400 hover:scale-110 transition nav-item"><i class="fab fa-github"></i></a>
+                        <a href="#" target="_blank" class="hover:text-cyan-400 hover:scale-110 transition nav-item"><i class="fab fa-instagram"></i></a>
+                    </div>
                 </div>
-                <h3 class="text-2xl font-bold text-white mb-1">Secondary Education</h3>
-                <p class="text-slate-400 font-medium">Radhakantapur High School</p>
             </div>
-        </div>
-    </section>
-
-    <section id="contact" class="py-32 px-6 text-center">
-        <div class="max-w-2xl mx-auto glass p-12 rounded-[3rem] border-white/5 relative overflow-hidden">
-            <div class="absolute -top-24 -left-24 w-48 h-48 bg-cyan-500/10 rounded-full blur-3xl"></div>
             
-            <h2 class="text-4xl font-black mb-6 text-white leading-tight">Ready to Connect?</h2>
-            <p class="text-slate-400 mb-10 italic">"I am currently available for discussions and basic project collaborations."</p>
-            
-            <a href="mailto:ghosharnab436@gmail.com" class="inline-flex items-center gap-3 bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-12 py-5 rounded-2xl font-black text-lg shadow-2xl shadow-cyan-900/40 hover:scale-105 active:scale-95 transition-all uppercase tracking-widest">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-                Email Me
-            </a>
+            <div class="flex justify-center lg:justify-end">
+                <div class="morph-profile" id="parallax-profile">
+                    <div class="profile-img-container">
+                        <img src="profile.jpg" alt="Arnab Ghosh" class="relative w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <footer class="py-12 border-t border-white/5 text-center px-6">
-        <p class="text-slate-500 text-[10px] font-bold uppercase tracking-[0.4em]">
-            &copy; 2026 Arnab Ghosh &bull; Computer Science Portfolio
-        </p>
+    <section id="about" class="py-40 px-6 bg-black/40 relative">
+        <div class="max-w-7xl mx-auto space-y-24 relative z-10">
+            <h2 class="section-header">Base_Data_Archive</h2>
+            
+            <div class="grid md:grid-cols-3 gap-10">
+                <div class="md:col-span-2 glass-panel p-16 flex flex-col justify-between border-cyan-500/10">
+                    <div class="space-y-6">
+                        <div class="text-xs tracking-widest text-cyan-500 uppercase font-bold">Current_Module</div>
+                        <h3 class="text-5xl font-extrabold text-white tracking-tight leading-tight">BSc Computer Science (Honours)</h3>
+                        <p class="text-slate-400 text-xl font-light">Memari College // Compiling advanced algorithmic logic, data structures, and computational theory.</p>
+                    </div>
+                    <div class="flex items-center gap-4 text-sm pt-8 mt-12 border-t border-white/5 text-slate-600 tracking-wider">
+                        <i class="fas fa-microchip text-cyan-700"></i> Semester_Active // 2024 - 2028
+                    </div>
+                </div>
+
+                <div class="glass-panel p-12 space-y-8 border-pink-500/10">
+                    <h4 class="text-2xl font-bold tracking-tight text-white flex items-center gap-3"><i class="fas fa-fingerprint text-pink-500"></i> Life_Threads</h4>
+                    <div class="flex flex-wrap gap-3.5 pt-4">
+                        <span class="px-4 py-2 rounded bg-pink-500/5 border border-pink-500/20 text-pink-300 text-xs tracking-wider uppercase font-semibold">Photography</span>
+                        <span class="px-4 py-2 rounded bg-pink-500/5 border border-pink-500/20 text-pink-300 text-xs tracking-wider uppercase font-semibold">Gaming</span>
+                        <span class="px-4 py-2 rounded bg-pink-500/5 border border-pink-500/20 text-pink-300 text-xs tracking-wider uppercase font-semibold">Music</span>
+                        <span class="px-4 py-2 rounded bg-pink-500/5 border border-pink-500/20 text-pink-300 text-xs tracking-wider uppercase font-semibold">Coding</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="glass-panel p-12 grid grid-cols-1 md:grid-cols-2 gap-10 divide-y md:divide-y-0 md:divide-x divide-white/5">
+                <div class="flex gap-6 items-center pt-8 md:pt-0">
+                    <div class="text-5xl font-black text-white/5 title-font">HS</div>
+                    <div>
+                        <h5 class="text-xl font-bold text-white uppercase tracking-wider">Higher Secondary</h5>
+                        <p class="text-slate-500 text-sm font-light">Gantar B M High School</p>
+                    </div>
+                </div>
+                <div class="flex gap-6 items-center pt-8 md:pt-0 md:pl-10">
+                    <div class="text-5xl font-black text-white/5 title-font">SE</div>
+                    <div>
+                        <h5 class="text-xl font-bold text-white uppercase tracking-wider">Secondary Education</h5>
+                        <p class="text-slate-500 text-sm font-light">Radhakantapur High School</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="py-40 px-6">
+        <div class="max-w-7xl mx-auto space-y-24">
+            <h2 class="section-header">Logic_Stack_Variables</h2>
+            
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="glass-panel p-10 text-center flex flex-col items-center hover:border-cyan-500 group nav-item">
+                    <div class="w-24 h-24 flex items-center justify-center mb-8 border-2 border-cyan-500/10 rounded-full group-hover:border-cyan-500/50 group-hover:shadow-[0_0_30px_rgba(0,242,254,0.2)] transition">
+                        <i class="fab fa-python text-5xl text-cyan-400"></i>
+                    </div>
+                    <h4 class="text-2xl font-bold text-white uppercase tracking-wider">Python</h4>
+                    <p class="text-xs text-slate-600 mt-2 tracking-widest font-light">Syntax // AI // Scripts</p>
+                </div>
+                <div class="glass-panel p-10 text-center flex flex-col items-center hover:border-cyan-500 group nav-item">
+                    <div class="w-24 h-24 flex items-center justify-center mb-8 border-2 border-cyan-500/10 rounded-full group-hover:border-cyan-500/50 group-hover:shadow-[0_0_30px_rgba(0,242,254,0.2)] transition">
+                        <i class="fab fa-java text-5xl text-cyan-400"></i>
+                    </div>
+                    <h4 class="text-2xl font-bold text-white uppercase tracking-wider">Java</h4>
+                    <p class="text-xs text-slate-600 mt-2 tracking-widest font-light">OOP // Backend // Systems</p>
+                </div>
+                <div class="glass-panel p-10 text-center flex flex-col items-center hover:border-cyan-500 group nav-item">
+                    <div class="w-24 h-24 flex items-center justify-center mb-8 border-2 border-cyan-500/10 rounded-full group-hover:border-cyan-500/50 group-hover:shadow-[0_0_30px_rgba(0,242,254,0.2)] transition">
+                        <span class="text-5xl font-black text-cyan-400 title-font">C++</span>
+                    </div>
+                    <h4 class="text-2xl font-bold text-white uppercase tracking-wider">C++</h4>
+                    <p class="text-xs text-slate-600 mt-2 tracking-widest font-light">Performance // Architecture</p>
+                </div>
+                <div class="glass-panel p-10 text-center flex flex-col items-center hover:border-cyan-500 group nav-item">
+                    <div class="w-24 h-24 flex items-center justify-center mb-8 border-2 border-cyan-500/10 rounded-full group-hover:border-cyan-500/50 group-hover:shadow-[0_0_30px_rgba(0,242,254,0.2)] transition">
+                        <span class="text-5xl font-black text-cyan-400 title-font">C</span>
+                    </div>
+                    <h4 class="text-2xl font-bold text-white uppercase tracking-wider">C Lang</h4>
+                    <p class="text-xs text-slate-600 mt-2 tracking-widest font-light">Low-Level // Memory</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-40 px-6 relative overflow-hidden">
+        <div class="max-w-5xl mx-auto glass-panel p-20 md:p-28 text-center border-accent/10 relative z-10">
+            <div class="absolute inset-0 opacity-5" style="background-image: url('data:image/svg+xml,%3Csvg width=&quot;20&quot; height=&quot;20&quot; viewBox=&quot;0 0 20 20&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;%3%3Cg fill=&quot;%23ff0055&quot; fill-opacity=&quot;1&quot; fill-rule=&quot;evenodd&quot;%3%3Ccircle cx=&quot;3&quot; cy=&quot;3&quot; r=&quot;3&quot;/%3%3C/g%3%3C/svg%3%3C/png%3');"></div>
+            
+            <h2 class="text-5xl md:text-8xl font-black title-font text-white leading-none tracking-tighter mb-10">Establish<br><span style="color:var(--secondary); text-shadow: 0 0 20px rgba(255,0,85,0.6);">Connection_</span></h2>
+            <p class="text-slate-400 text-xl max-w-xl mx-auto mb-20 font-light leading-relaxed">Response latency is minimal for all algorithmic collaboration queries or innovative digital discussions.</p>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <a href="mailto:ghosharnab436@gmail.com" class="glass-panel p-8 flex flex-col items-center gap-4 hover:border-white hover:bg-white/5 transition nav-item">
+                    <i class="fas fa-envelope text-3xl text-slate-200"></i>
+                    <span class="text-xs font-bold tracking-widest uppercase text-white">Email</span>
+                </a>
+                <a href="#" target="_blank" class="glass-panel p-8 flex flex-col items-center gap-4 hover:border-pink-500 hover:bg-pink-500/5 transition nav-item">
+                    <i class="fab fa-instagram text-3xl text-pink-400"></i>
+                    <span class="text-xs font-bold tracking-widest uppercase text-white">Insta</span>
+                </a>
+                <a href="https://www.facebook.com/arnab.arnab.155555" target="_blank" class="glass-panel p-8 flex flex-col items-center gap-4 hover:border-blue-500 hover:bg-blue-500/5 transition nav-item">
+                    <i class="fab fa-facebook-f text-3xl text-blue-400"></i>
+                    <span class="text-xs font-bold tracking-widest uppercase text-white">FB</span>
+                </a>
+                <a href="https://github.com/Arnab7510" target="_blank" class="glass-panel p-8 flex flex-col items-center gap-4 hover:border-cyan-500 hover:bg-cyan-500/5 transition nav-item">
+                    <i class="fab fa-github text-3xl text-cyan-400"></i>
+                    <span class="text-xs font-bold tracking-widest uppercase text-white">Github</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-16 border-t border-white/5 text-center px-6">
+        <div class="text-[10px] tracking-[0.5em] text-slate-700 uppercase title-font">
+            Arnab Ghosh // Logic Operator // Terminal_Output_2026
+        </div>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js"></script>
     <script>
-        const btn = document.getElementById('menu-btn');
-        const menu = document.getElementById('mobile-menu');
-
-        btn.addEventListener('click', () => {
-            menu.classList.toggle('hidden');
+        // TS Particles (Dynamic Background)
+        tsParticles.load("tsparticles", {
+            fpsLimit: 60,
+            particles: {
+                number: { value: 50, density: { enable: true, value_area: 800 } },
+                color: { value: "#ffffff" },
+                shape: { type: "circle" },
+                opacity: { value: 0.08, random: true },
+                size: { value: 2, random: true },
+                move: { enable: true, speed: 0.5, direction: "none", random: true, straight: false, out_mode: "out" },
+                line_linked: { enable: true, distance: 150, color: "#ffffff", opacity: 0.03, width: 1 }
+            },
+            interactivity: {
+                events: { onhover: { enable: true, mode: "grab" } },
+                modes: { grab: { distance: 200, line_linked: { opacity: 0.08 } } }
+            }
         });
 
-        // Close menu when a link is clicked
-        document.querySelectorAll('#mobile-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                menu.classList.add('hidden');
+        // Custom Cursor & Follower
+        const cursor = document.getElementById('cursor');
+        const follower = document.getElementById('cursor-follower');
+        const navItems = document.querySelectorAll('.nav-item, a, button, .glass-panel');
+
+        window.addEventListener('mousemove', (e) => {
+            cursor.style.transform = `translate3d(${e.clientX - 4}px, ${e.clientY - 4}px, 0)`;
+            follower.style.transform = `translate3d(${e.clientX - 17.5}px, ${e.clientY - 17.5}px, 0)`;
+            
+            // Background Grid interaction
+            document.documentElement.style.setProperty('--x', `${e.clientX}px`);
+            document.documentElement.style.setProperty('--y', `${e.clientY}px`);
+        });
+
+        // Parallax Effect for Name and Profile
+        const nameEl = document.getElementById('parallax-name');
+        const profileEl = document.getElementById('parallax-profile');
+
+        window.addEventListener('mousemove', (e) => {
+            const xAxis = (window.innerWidth / 2 - e.clientX) / 25;
+            const yAxis = (window.innerHeight / 2 - e.clientY) / 25;
+            
+            nameEl.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg) translateZ(50px)`;
+            profileEl.style.transform = `rotateY(${-xAxis/2}deg) rotateX(${-yAxis/2}deg) translateZ(20px)`;
+        });
+
+        // Hover Effects for Custom Cursor
+        navItems.forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                cursor.style.transform += ' scale(3)';
+                cursor.style.backgroundColor = 'transparent';
+                cursor.style.border = '1px solid #00f2fe';
+                follower.style.borderColor = 'rgba(255, 0, 85, 0.7)'; // Glow Pink on hover
+                follower.style.transform += ' scale(1.3)';
+            });
+            item.addEventListener('mouseleave', () => {
+                cursor.style.transform = cursor.style.transform.replace(' scale(3)', '');
+                cursor.style.backgroundColor = '#00f2fe';
+                cursor.style.border = 'none';
+                follower.style.borderColor = 'rgba(0, 242, 254, 0.3)';
+                follower.style.transform = follower.style.transform.replace(' scale(1.3)', '');
+            });
+        });
+
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
             });
         });
     </script>
-
 </body>
 </html>
